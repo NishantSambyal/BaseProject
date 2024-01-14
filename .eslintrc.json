@@ -4,20 +4,21 @@
     "es2021": true
   },
   "extends": [
-    "eslint:recommended",
-    "plugin:prettier/recommended",
-    "plugin:import/errors",
-    "plugin:import/warnings",
-    "standard-with-typescript",
-    "plugin:react/recommended",
-    "plugin:promise/recommended",
-    "plugin:@typescript-eslint/eslint-recommended",
-    "plugin:@typescript-eslint/recommended",
-    "plugin:react-hooks/recommended",
-    "plugin:import/recommended",
-    "plugin:import/typescript",
-    "plugin:n/recommended",
-    "prettier"
+    // ESLint recommended configurations
+    "eslint:recommended", // Base ESLint rules
+    "plugin:prettier/recommended", // Prettier recommended settings
+    "plugin:import/errors", // Import plugin for import-related rules (errors)
+    "plugin:import/warnings", // Import plugin for import-related rules (warnings)
+    "standard-with-typescript", // StandardJS with TypeScript support
+    "plugin:react/recommended", // React recommended rules
+    "plugin:promise/recommended", // Promise plugin recommended rules
+    "plugin:@typescript-eslint/eslint-recommended", // TypeScript ESLint recommended rules
+    "plugin:@typescript-eslint/recommended", // Recommended TypeScript rules
+    "plugin:react-hooks/recommended", // React Hooks recommended rules
+    "plugin:import/recommended", // Import plugin recommended rules
+    "plugin:import/typescript", // TypeScript-specific rules for Import plugin
+    "plugin:n/recommended", // Custom "n" plugin recommended rules
+    "prettier" // Prettier rules
   ],
   "parser": "@typescript-eslint/parser",
   "parserOptions": {
@@ -25,6 +26,7 @@
     "sourceType": "module"
   },
   "settings": {
+    // Configuration for TypeScript and Node resolver
     "import/resolver": {
       "typescript": {
         "project": "./tsconfig.json"
@@ -34,12 +36,23 @@
       }
     }
   },
-  "plugins": ["react", "prettier", "import"],
+  "plugins": [
+    // List of installed plugins
+    "react",
+    "prettier",
+    "import",
+    "n",
+    "@typescript-eslint",
+    "promise",
+    "react-hooks"
+    // ... other plugins
+  ],
   "rules": {
-    "comma-dangle": "off",
-    "semi": ["error", "always"],
-    "@typescript-eslint/semi": "off",
-    "@typescript-eslint/no-var-requires": "off",
+    // Prettier rules
+    "comma-dangle": "off", // Example: "key": "value", (Trailing commas in object literals)
+    "semi": ["error", "always"], // Example: statement; (Enforce semicolons at the end of statements)
+    "@typescript-eslint/semi": "off", // Example: statement (Enforce or disallow semicolons instead of ASI)
+    "@typescript-eslint/no-var-requires": "off", // Example: const foo = require('foo'); (Disallow the use of `var` with `require`)
     "@typescript-eslint/member-delimiter-style": [
       "off",
       {
@@ -52,7 +65,7 @@
           "requireLast": false
         }
       }
-    ],
+    ], // Example: { a: 1, b: 2 } (Enforce or disallow trailing commas in object literals)
     "@typescript-eslint/space-before-function-paren": [
       "off",
       {
@@ -60,7 +73,7 @@
         "named": "never",
         "asyncArrow": "always"
       }
-    ],
+    ], // Example: function () { } (Enforce consistent spacing before function definition opening parenthesis)
     "@typescript-eslint/comma-dangle": [
       "error",
       {
@@ -70,83 +83,85 @@
         "exports": "always-multiline",
         "functions": "never"
       }
-    ],
-    "indent": ["error", 2],
-    "quotes": ["error", "single"],
+    ], // Example: ["value", "value",] (Enforce consistent spacing before and after commas)
+    "indent": ["error", 2], // Example: 2 spaces (Enforce consistent indentation)
+    "quotes": ["error", "single"], // Example: 'value' (Enforce the consistent use of either backticks, double, or single quotes)
 
     // TypeScript-specific rules
-    "@typescript-eslint/explicit-function-return-type": "off",
-    "@typescript-eslint/no-explicit-any": "off",
+    "@typescript-eslint/explicit-function-return-type": "off", // Example: function foo(): number { } (Require explicit return types on functions and class methods)
+    "@typescript-eslint/no-explicit-any": "off", // Example: const foo: any = 'bar'; (Disallow usage of the `any` type)
 
     // React-specific rules
     "react/jsx-filename-extension": [
       "error",
       { "extensions": [".jsx", ".tsx"] }
-    ],
-    "react/prop-types": "off", // Disable prop-types as TypeScript provides this functionality
+    ], // Example: file.jsx or file.tsx (Restrict file extensions that may contain JSX)
+    "react/prop-types": "off", // Example: PropTypes.string.isRequired (Disable prop-types as TypeScript provides this functionality)
 
     // React Hooks rules
-    "react-hooks/rules-of-hooks": "error",
-    "react-hooks/exhaustive-deps": "warn",
-    "import/no-unresolved": ["error", { "commonjs": true, "amd": true }],
+    "react-hooks/rules-of-hooks": "error", // Example: useEffect(() => { /* side effect */ }, []); (Enforce rules of hooks)
+    "react-hooks/exhaustive-deps": "warn", // Example: useEffect(() => { /* side effect */ }, [dependency]); (Exhaustive-deps rule)
+
+    // Import and sorting rules
+    "import/no-unresolved": ["error", { "commonjs": true, "amd": true }], // Example: import 'module'; (Ensure imports point to files/modules that can be resolved)
     "import/order": [
       "error",
       {
         "groups": [
           "builtin", // Built-in imports (come from NodeJS native) go first
-          "external", // <- External imports
-          "internal", // <- Absolute imports
-          ["sibling", "parent"], // <- Relative imports, the sibling and parent types they can be mingled together
-          "index", // <- index imports
-          "unknown" // <- unknown
+          "external", // External imports
+          "internal", // Absolute imports
+          ["sibling", "parent"], // Relative imports, the sibling and parent types they can be mingled together
+          "index", // Index imports
+          "unknown" // Unknown imports
         ],
-        "newlines-between": "always",
+        "newlines-between": "always", // Enforce blank lines between groups of imports
         "alphabetize": {
-          /* sort in ascending order. Options: ["ignore", "asc", "desc"] */
-          "order": "asc",
-          /* ignore case. Options: [true, false] */
-          "caseInsensitive": true
+          "order": "asc", // Sort in ascending order
+          "caseInsensitive": true // Ignore case while sorting
         }
       }
-    ],
-    "import/named": "error",
-    "import/namespace": "off",
-    "import/default": "error",
-    "import/export": "error",
-    "no-dupe-else-if": "error",
-    "no-dupe-keys": "error",
-    "no-duplicate-case": "error",
-    "no-duplicate-imports": "error",
-    "no-fallthrough": "error",
-    "no-func-assign": "error",
-    "no-irregular-whitespace": "error",
-    "no-self-assign": "warn",
-    "no-self-compare": "warn",
-    "no-sparse-arrays": "error",
-    "no-template-curly-in-string": "error",
-    "no-unreachable": "warn",
-    "no-unreachable-loop": "warn",
-    "valid-typeof": "error",
-    "camelcase": "warn",
+    ], // Example: import { foo } from 'bar'; (Enforce a specific import order)
+    "import/named": "error", // Example: import { named } from 'module'; (Ensure named imports coupled with named exports are not ambiguous)
+    "import/namespace": "off", // Example: import * as myModule from 'module'; (Ensure a namespace is not used for named exports)
+    "import/default": "error", // Example: import myDefault from 'module'; (Ensure a default export is present, given a default import)
+    "import/export": "error", // Example: export { myFunction }; (Report any invalid exports, i.e., re-export of the same name)
+
+    // Other general ESLint rules
+    "no-dupe-else-if": "error", // Example: if (condition1) { /* code */ } else if (condition1) { /* code */ } (Disallow duplicate conditions in if-else-if chains)
+    "no-dupe-keys": "error", // Example: { key: 1, key: 2 } (Disallow duplicate keys in object literals)
+    "no-duplicate-case": "error", // Example: switch (x) { case 1: /* code */ break; case 1: /* code */ break; } (Disallow a duplicate case label)
+    "no-duplicate-imports": "error", // Example: import { foo } from 'module'; import { bar } from 'module'; (Disallow duplicate module imports)
+    "no-fallthrough": "error", // Example: switch (x) { case 1: /* code */ break; case 2: /* code */ break; } (Disallow fallthrough of case statements)
+    "no-func-assign": "error", // Example: function foo() {} foo = bar; (Disallow reassigning `function` declarations)
+    "no-irregular-whitespace": "error", // Example: var a = 1; // No space before comment (Disallow irregular whitespace)
+    "no-self-assign": "warn", // Example: var x = x; (Disallow assignments where both sides are exactly the same)
+    "no-self-compare": "warn", // Example: if (x === x) { /* code */ } (Disallow comparisons where both sides are exactly the same)
+    "no-sparse-arrays": "error", // Example: var items = [,,]; (Disallow sparse arrays)
+    "no-template-curly-in-string": "error", // Example: 'Hello, ${name}!'; (Disallow template literal placeholder syntax in regular strings)
+    "no-unreachable": "warn", // Example: function foo() { return 1; return 2; } (Disallow unreachable code)
+    "no-unreachable-loop": "warn", // Example: while (true) { /* code */ } (Disallow loops with a body that allows only one iteration)
+    "valid-typeof": "error", // Example: if (typeof value === 'undeifned') { /* code */ } (Ensure that the results of typeof are compared against a valid string)
+    "camelcase": "warn", // Example: my_variable_name (Enforce camelcase naming convention)
     "max-lines": [
       "error",
       { "max": 300, "skipBlankLines": true, "skipComments": true }
-    ],
-    "max-params": ["error", { "max": 3 }],
-    "no-console": ["error", { "allow": ["warn", "info"] }],
-    "no-empty-function": "error",
-    "no-lonely-if": "warn",
-    "no-multi-assign": ["error", { "ignoreNonDeclaration": true }],
+    ], // Example: Maximum 300 lines per file (Enforce a maximum number of lines in a file)
+    "max-params": ["error", { "max": 3 }], // Example: function example(param1, param2, param3) { /* code */ } (Enforce a maximum number of parameters in function definitions)
+    "no-console": ["error", { "allow": ["warn", "info"] }], // Example: console.warn('Warning!'); (Disallowed console.log but allowed console.warn and console.info)
+    "no-empty-function": "error", // Example: function foo() {} (Disallowed empty functions)
+    "no-lonely-if": "warn", // Example: if (condition1) { /* code */ } else if (condition2) { /* code */ } (Disallowed if statements as the only statement in `else` blocks)
+    "no-multi-assign": ["error", { "ignoreNonDeclaration": true }], // Example: var a = 1, b = 2, c = 3; (Disallowed use of chained assignment expressions)
     "sort-imports": [
       "error",
       {
         "ignoreCase": false,
-        "ignoreDeclarationSort": true, // don"t want to sort import lines, use eslint-plugin-import instead
+        "ignoreDeclarationSort": true, // Don't want to sort import lines, use eslint-plugin-import instead
         "ignoreMemberSort": false,
         "memberSyntaxSortOrder": ["none", "all", "multiple", "single"],
         "allowSeparatedGroups": true
       }
-    ],
-    "n/exports-style": ["error", "module.exports"]
+    ], // Example: import { b, a } from 'module'; (Enforce sorted import declarations within modules)
+    "n/exports-style": ["error", "module.exports"] // Example: module.exports = { /* exported values */ }; (Enforce usage of `module.exports` over `exports`)
   }
 }
