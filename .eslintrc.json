@@ -1,0 +1,152 @@
+{
+  "env": {
+    "browser": true,
+    "es2021": true
+  },
+  "extends": [
+    "eslint:recommended",
+    "plugin:prettier/recommended",
+    "plugin:import/errors",
+    "plugin:import/warnings",
+    "standard-with-typescript",
+    "plugin:react/recommended",
+    "plugin:promise/recommended",
+    "plugin:@typescript-eslint/eslint-recommended",
+    "plugin:@typescript-eslint/recommended",
+    "plugin:react-hooks/recommended",
+    "plugin:import/recommended",
+    "plugin:import/typescript",
+    "plugin:n/recommended",
+    "prettier"
+  ],
+  "parser": "@typescript-eslint/parser",
+  "parserOptions": {
+    "ecmaVersion": "latest",
+    "sourceType": "module"
+  },
+  "settings": {
+    "import/resolver": {
+      "typescript": {
+        "project": "./tsconfig.json"
+      },
+      "node": {
+        "extensions": [".js", ".jsx"]
+      }
+    }
+  },
+  "plugins": ["react", "prettier", "import"],
+  "rules": {
+    "comma-dangle": "off",
+    "semi": ["error", "always"],
+    "@typescript-eslint/semi": "off",
+    "@typescript-eslint/no-var-requires": "off",
+    "@typescript-eslint/member-delimiter-style": [
+      "off",
+      {
+        "multiline": {
+          "delimiter": "comma",
+          "requireLast": true
+        },
+        "singleline": {
+          "delimiter": "comma",
+          "requireLast": false
+        }
+      }
+    ],
+    "@typescript-eslint/space-before-function-paren": [
+      "off",
+      {
+        "anonymous": "always",
+        "named": "never",
+        "asyncArrow": "always"
+      }
+    ],
+    "@typescript-eslint/comma-dangle": [
+      "error",
+      {
+        "arrays": "always-multiline",
+        "objects": "always-multiline",
+        "imports": "always-multiline",
+        "exports": "always-multiline",
+        "functions": "never"
+      }
+    ],
+    "indent": ["error", 2],
+    "quotes": ["error", "single"],
+
+    // TypeScript-specific rules
+    "@typescript-eslint/explicit-function-return-type": "off",
+    "@typescript-eslint/no-explicit-any": "off",
+
+    // React-specific rules
+    "react/jsx-filename-extension": [
+      "error",
+      { "extensions": [".jsx", ".tsx"] }
+    ],
+    "react/prop-types": "off", // Disable prop-types as TypeScript provides this functionality
+
+    // React Hooks rules
+    "react-hooks/rules-of-hooks": "error",
+    "react-hooks/exhaustive-deps": "warn",
+    "import/no-unresolved": ["error", { "commonjs": true, "amd": true }],
+    "import/order": [
+      "error",
+      {
+        "groups": [
+          "builtin", // Built-in imports (come from NodeJS native) go first
+          "external", // <- External imports
+          "internal", // <- Absolute imports
+          ["sibling", "parent"], // <- Relative imports, the sibling and parent types they can be mingled together
+          "index", // <- index imports
+          "unknown" // <- unknown
+        ],
+        "newlines-between": "always",
+        "alphabetize": {
+          /* sort in ascending order. Options: ["ignore", "asc", "desc"] */
+          "order": "asc",
+          /* ignore case. Options: [true, false] */
+          "caseInsensitive": true
+        }
+      }
+    ],
+    "import/named": "error",
+    "import/namespace": "off",
+    "import/default": "error",
+    "import/export": "error",
+    "no-dupe-else-if": "error",
+    "no-dupe-keys": "error",
+    "no-duplicate-case": "error",
+    "no-duplicate-imports": "error",
+    "no-fallthrough": "error",
+    "no-func-assign": "error",
+    "no-irregular-whitespace": "error",
+    "no-self-assign": "warn",
+    "no-self-compare": "warn",
+    "no-sparse-arrays": "error",
+    "no-template-curly-in-string": "error",
+    "no-unreachable": "warn",
+    "no-unreachable-loop": "warn",
+    "valid-typeof": "error",
+    "camelcase": "warn",
+    "max-lines": [
+      "error",
+      { "max": 300, "skipBlankLines": true, "skipComments": true }
+    ],
+    "max-params": ["error", { "max": 3 }],
+    "no-console": ["error", { "allow": ["warn", "info"] }],
+    "no-empty-function": "error",
+    "no-lonely-if": "warn",
+    "no-multi-assign": ["error", { "ignoreNonDeclaration": true }],
+    "sort-imports": [
+      "error",
+      {
+        "ignoreCase": false,
+        "ignoreDeclarationSort": true, // don"t want to sort import lines, use eslint-plugin-import instead
+        "ignoreMemberSort": false,
+        "memberSyntaxSortOrder": ["none", "all", "multiple", "single"],
+        "allowSeparatedGroups": true
+      }
+    ],
+    "n/exports-style": ["error", "module.exports"]
+  }
+}
