@@ -1,5 +1,5 @@
-import { ApiRoutes } from '../../network/apiRoute';
-import { handleAPICall } from '../../network/useApiController';
+import { ApiRoutes } from '../../../network/apiRoute';
+import { handleAPICall } from '../../../network/useApiController';
 
 const getProduct = () => {
   return new Promise((resolve, reject) => {
@@ -16,4 +16,3 @@ const getProduct = () => {
 };
 
 export { getProduct };
-

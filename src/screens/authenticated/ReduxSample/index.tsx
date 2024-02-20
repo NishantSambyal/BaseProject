@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import React, { useEffect, useState } from 'react';
 import {
   ScrollView,
   StyleSheet,
@@ -6,14 +6,15 @@ import {
   TouchableOpacity,
   View,
 } from 'react-native';
-import {useDispatch, useSelector} from 'react-redux';
-import {fetchProductsRequest} from '../reducers/slices/exampleSlice';
-import {myProducts} from '../selectors/productReducer';
-import {getProduct} from './dataController';
+import { useDispatch, useSelector } from 'react-redux';
+import { fetchProductsRequest } from '../../../redux/reducers/slices/exampleSlice';
+import { myProducts } from '../../../redux/selectors/productReducer';
+import { getProduct } from './dataController';
 
-const Sample = () => {
+const ReduxSample = () => {
   const dispatch = useDispatch();
   const [products, setProducts] = useState([]);
+
   const rProducts = useSelector(myProducts);
   useEffect(() => {
     setProducts(rProducts);
@@ -26,7 +27,6 @@ const Sample = () => {
     getProduct()
       .then((response: any) => {
         setProducts(response);
-        console.log('response', response);
       })
       .catch((error: any) => {
         console.log('err,', error);
@@ -34,19 +34,23 @@ const Sample = () => {
   };
   return (
     <View style={styles.container}>
-      <TouchableOpacity style={styles.button} onPress={() => fetchWithRedux()}>
-        <Text>Call API with Redux</Text>
+      <TouchableOpacity
+        style={styles.button}
+        onPress={() => fetchWithRedux()}>
+        <Text>Example Call API with Redux</Text>
       </TouchableOpacity>
       <TouchableOpacity
         style={styles.button}
         onPress={() => fetchWithApiController()}>
-        <Text>Call API with apiController</Text>
+        <Text>Example Call API with apiController</Text>
       </TouchableOpacity>
 
       <ScrollView>
         {products &&
           products?.map((product: any) => (
-            <View style={styles.view} key={product.id}>
+            <View
+              style={styles.view}
+              key={product.id}>
               <Text>{product.body}</Text>
             </View>
           ))}
@@ -55,7 +59,7 @@ const Sample = () => {
   );
 };
 
-export default Sample;
+export default ReduxSample;
 
 const styles = StyleSheet.create({
   container: {

@@ -1,6 +1,6 @@
-import React, {Fragment} from 'react';
-import {StyleSheet, TextInput} from 'react-native';
-import {AppTextInputProps} from './type';
+import React, { Fragment } from 'react';
+import { StyleSheet, TextInput } from 'react-native';
+import { AppTextInputProps } from './type';
 
 const AppTextInput: React.FC<AppTextInputProps> = ({
   inputStyle,

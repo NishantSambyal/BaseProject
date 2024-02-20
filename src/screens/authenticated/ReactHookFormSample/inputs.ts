@@ -9,12 +9,7 @@ export const section: SampleFormBuilderProps = {
       fieldPlaceholder: 'Enter Email',
       schemaName: 'username',
       inputType: FormEnumType.TEXT_INPUT,
-      value: 'userinvestor@adxcloud.ae',
-      // inputStyle: {
-      //   height: 45,
-      //   borderRadius: 12,
-      //   borderTopLeftRadius: 12,
-      // },
+      value: 'abc@example.com',
     },
     {
       label: 'Password',

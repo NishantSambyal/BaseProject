@@ -1,8 +1,9 @@
 import React from 'react';
-import {useController} from 'react-hook-form';
-import {StyleSheet, Text, View} from 'react-native';
-import AppTextInput from '.';
-import {AppTextInputType, TextInputCtrlTypes} from './type';
+import { useController } from 'react-hook-form';
+import { StyleSheet, Text, View } from 'react-native';
+import AppTextInput from './index';
+import { AppTextInputType, TextInputCtrlTypes } from './type';
+
 const TextInputController: React.FC<AppTextInputType & TextInputCtrlTypes> = ({
   inputStyle,
   control,
@@ -11,8 +12,8 @@ const TextInputController: React.FC<AppTextInputType & TextInputCtrlTypes> = ({
   ...props
 }) => {
   const {
-    field: {onChange, value, onBlur},
-    fieldState: {error},
+    field: { onChange, value, onBlur },
+    fieldState: { error },
   } = useController({
     name: schemaName,
     control,

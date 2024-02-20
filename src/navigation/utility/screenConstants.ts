@@ -10,6 +10,8 @@ export const SCREENS: RootStackProps = {
   Login: 'Login',
   Dashboard: 'Dashboard',
   Success: 'Success',
+  ReduxSample: 'ReduxSample',
+  ReactHookFormSample: 'ReactHookFormSample',
 };
 
 export const globalStackRoutes: RoutesItem<RootStackProps>[] = [
@@ -31,6 +33,14 @@ export const authenticatedStackRoutes: RoutesItem<RootStackProps>[] = [
   {
     name: SCREENS.Dashboard,
     component: Component.Dashboard,
+  },
+  {
+    name: SCREENS.ReduxSample,
+    component: Component.ReduxSample,
+  },
+  {
+    name: SCREENS.ReactHookFormSample,
+    component: Component.ReactHookFormSample,
   },
   ...globalStackRoutes,
 ];

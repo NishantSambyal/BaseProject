@@ -1,16 +1,16 @@
-import {yupResolver} from '@hookform/resolvers/yup';
+import { yupResolver } from '@hookform/resolvers/yup';
 import React from 'react';
-import {SubmitHandler, useForm} from 'react-hook-form';
-import {StyleSheet, Text, TouchableOpacity, View} from 'react-native';
-import AppForm from '../component';
-import {section, validations} from './inputs';
-import {IFormInput} from './types';
+import { SubmitHandler, useForm } from 'react-hook-form';
+import { StyleSheet, Text, TouchableOpacity, View } from 'react-native';
+import AppForm from '../../../components/hookForm/component';
+import { section, validations } from './inputs';
+import { IFormInput } from './types';
 
-const Sample = () => {
+const ReactHookFormSample = () => {
   const {
     control,
     handleSubmit,
-    formState: {isValid},
+    formState: { isValid },
   } = useForm<IFormInput>({
     reValidateMode: 'onChange',
     resolver: yupResolver(validations),
@@ -22,13 +22,16 @@ const Sample = () => {
 
   return (
     <View style={styles.container}>
-      <AppForm inputs={section.inputs} control={control} />
+      <AppForm
+        inputs={section.inputs}
+        control={control}
+      />
 
       <TouchableOpacity
         disabled={!isValid}
         style={[
           styles.button,
-          {backgroundColor: !isValid ? 'lightgray' : 'blue'},
+          { backgroundColor: !isValid ? 'lightgray' : 'blue' },
         ]}
         onPress={handleSubmit(onSubmit)}>
         <Text style={styles.buttonText}>Click me</Text>
@@ -37,7 +40,7 @@ const Sample = () => {
   );
 };
 
-export default Sample;
+export default ReactHookFormSample;
 
 const styles = StyleSheet.create({
   container: {

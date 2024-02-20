@@ -1,10 +1,10 @@
 import React from 'react';
-import {Text, View} from 'react-native';
-import {AppFormProps, InputProps} from '../../../types/components.types';
-import {FormEnumType} from '../../../types/globalEnums';
+import { Text, View } from 'react-native';
+import { AppFormProps, InputProps } from '../../../types/components.types';
+import { FormEnumType } from '../../../types/globalEnums';
 import TextInputController from '../../AppTextInput/TextInputController';
 
-const AppForm: React.FC<AppFormProps> = ({inputs, control}) => {
+const AppForm: React.FC<AppFormProps> = ({ inputs, control }) => {
   return (
     <View>
       {!!inputs &&

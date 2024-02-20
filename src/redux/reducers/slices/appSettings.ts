@@ -24,7 +24,7 @@ const appSettings = createSlice({
   },
 });
 
-export const {selectLanguage, setIsFirstOpen, resetAppSettings} =
+export const { selectLanguage, setIsFirstOpen, resetAppSettings } =
   appSettings.actions;
 
 // Export reducer
