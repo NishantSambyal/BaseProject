@@ -6,17 +6,18 @@ export const section: SampleFormBuilderProps = {
   inputs: [
     {
       label: 'Email',
-      fieldPlaceholder: 'Enter Email',
+      placeholder: 'Enter Email',
       schemaName: 'username',
       inputType: FormEnumType.TEXT_INPUT,
-      value: 'abc@example.com',
+      // value: 'abc@example.com',
     },
     {
       label: 'Password',
-      fieldPlaceholder: 'Enter Password',
+      placeholder: 'Enter Password',
       schemaName: 'password',
       inputType: FormEnumType.TEXT_INPUT,
-      value: 'FAKEpwd13!',
+      // value: 'FAKEpwd13!',
+      secureTextEntry: true,
       inputStyle: {
         height: 90,
         borderRadius: 12,

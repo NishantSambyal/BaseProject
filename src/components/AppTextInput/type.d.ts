@@ -1,7 +1,7 @@
 import { Control, FieldPath, FieldValues } from 'react-hook-form';
 import { TextInputProps, TextStyle, ViewStyle } from 'react-native';
 
-export interface AppTextInputType {
+export interface AppTextInputType extends TextInputProps {
   viewStyle?: ViewStyle;
   inputStyle?: TextStyle;
 }

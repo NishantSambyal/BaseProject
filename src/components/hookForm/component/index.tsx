@@ -14,9 +14,9 @@ const AppForm: React.FC<AppFormProps> = ({ inputs, control }) => {
               label,
               inputType,
               schemaName,
-              fieldPlaceholder,
               inputStyle,
               value,
+              ...props
             }: InputProps,
             index: number,
           ) => (
@@ -27,8 +27,8 @@ const AppForm: React.FC<AppFormProps> = ({ inputs, control }) => {
                   defaultValue={value}
                   schemaName={schemaName}
                   control={control}
-                  placeholder={fieldPlaceholder}
                   inputStyle={inputStyle}
+                  {...props}
                 />
               )}
             </View>

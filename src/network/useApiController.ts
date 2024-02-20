@@ -16,7 +16,7 @@ const handleAPICall = async ({
   try {
     const response = await route(payload);
     if (response.status === RESPONSE_CODE.success) {
-      const {data} = response;
+      const { data } = response;
       handleSuccess(data);
     }
   } catch (error) {
@@ -24,4 +24,3 @@ const handleAPICall = async ({
   }
 };
 export { handleAPICall };
-
